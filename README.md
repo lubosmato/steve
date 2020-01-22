@@ -1,5 +1,5 @@
 # Steve 
-Steve Stifmeister's catchphrases (Czech) from American Pie movie.
+Steve Stifmeister's catchphrases (Czech) from American Pie movie https://www.stifmeister.cz/
 
 Fun project with Vue.js, Quasar and PWA
 
