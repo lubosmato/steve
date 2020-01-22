@@ -38,22 +38,16 @@ export default {
 
 <style scoped lang="scss">
 .q-btn {
-  max-width: 140px;
-  max-height: 140px;
-  min-width: 100px;
-  min-height: 100px;
-  width: 10vw;
-  height: 10vw;
+  width: 100%;
+  height: 100%;
   font-size: 1em;
   word-wrap: break-word;
 }
-
 @media only screen and (max-width: 1024px) {
   .q-btn {
     font-size: 0.9em;
   }
 }
-
 @media only screen and (max-width: 750px) {
   .q-btn {
     font-size: 0.8em;
