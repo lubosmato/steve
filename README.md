@@ -1,6 +1,7 @@
-# Steve (webapp)
+# Steve 
+Steve Stifmeister's catchphrases (Czech) from American Pie movie.
 
-Steve Stifmeister v akci
+Fun project with Vue.js, Quasar and PWA
 
 ## Install the dependencies
 ```bash
