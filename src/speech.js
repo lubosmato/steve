@@ -56,7 +56,7 @@ export const speech = [
   "ty ses snad úplně posral",
   "ty seš ale medvěd",
   "ty vyjebanče",
-  "uhuhohahahahaa",
+  "uhuhohaha",
   "uhulahh",
   "uslyším haleluja",
   "uspořádáme rozlučku se svobodou",
@@ -67,7 +67,7 @@ export const speech = [
   "vyser se na blbou švadlenku",
   "všechno nejpojebanější",
   "z kundy xichte",
-  "zprostředkovatel mrdu",
+  "drazí jebáci",
   "čau z kundy xichte",
   "šáhni ji na prdel",
 ]

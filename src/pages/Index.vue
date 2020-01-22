@@ -1,9 +1,17 @@
 <template>
-  <div class="home">
-    <div class="buttons">
+  <q-page class="home q-mt-lg">
+    <h1 class="desktop-only text-h2">Steve Stifmeister</h1>
+    <div class="row q-gutter-md justify-center">
       <SoundButton v-for="(soundFile, index) in soundFiles" :key="index" :sound-file="soundFile" />
+      <SoundButton
+        class="button-placeholder"
+        area-hidden="true"
+        v-for="i in 7"
+        :key="`placeholder${i}`"
+        sound-file="baby a cecky"
+      />
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
@@ -25,35 +33,28 @@ export default {
 
 <style scoped lang="scss">
 .home {
-  padding: 0 20%;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  flex-direction: column;
+  padding: 0 25%;
 }
 
-.buttons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+.button-placeholder {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 1920px) {
+  .home {
+    padding: 0 15%;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
   .home {
     padding: 0 5%;
   }
-  .buttons {
-    width: 100%;
-  }
 }
 
 @media only screen and (max-width: 750px) {
   .home {
     padding: 0;
-  }
-  .buttons {
-    width: 100%;
   }
 }
 </style>
