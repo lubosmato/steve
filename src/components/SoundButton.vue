@@ -9,6 +9,7 @@
 </template>
 
 <script>
+/* eslint-disable no-undef */
 export default {
   name: "SoundButton",
   props: {
@@ -21,10 +22,10 @@ export default {
   },
   computed: {
     oggPath() {
-      return `${this.publicPath}speech/${this.soundFile}.ogg`
+      return `statics/speech/${this.soundFile}.ogg`
     },
     mp3Path() {
-      return `${this.publicPath}speech/${this.soundFile}.mp3`
+      return `statics/speech/${this.soundFile}.mp3`
     },
   },
   methods: {
