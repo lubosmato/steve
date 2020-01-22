@@ -4,6 +4,33 @@
     <div class="buttons">
       <SoundButton v-for="(soundFile, index) in soundFiles" :key="index" :sound-file="soundFile" />
     </div>
+
+    <div class="q-pa-md q-gutter-sm">
+      <q-dialog v-model="isInstallDialogShown" seamless position="bottom" square>
+        <q-card>
+          <q-card class="bg-primary text-white">
+            <q-card-section class="row items-center no-wrap">
+              <div>
+                <div class="text-weight-bold">Přidat Steva na plochu</div>
+                <div class="">Používej Steva i offline</div>
+              </div>
+              <q-space />
+              <div class="q-gutter-sm q-ml-sm">
+                <q-btn label="Jindy" color="white" small flat no-caps v-close-popup />
+                <q-btn
+                  label="Přidat"
+                  text-color="primary"
+                  color="white"
+                  small
+                  v-close-popup
+                  @click="confirmInstallation"
+                />
+              </div>
+            </q-card-section>
+          </q-card>
+        </q-card>
+      </q-dialog>
+    </div>
   </q-page>
 </template>
 
@@ -18,8 +45,25 @@ export default {
   },
   data: function() {
     return {
+      isInstalled: window.matchMedia("(display-mode: standalone)").matches,
+      installPrompt: null,
+      isInstallDialogShown: false,
       soundFiles: speech,
     }
+  },
+  methods: {
+    confirmInstallation() {
+      this.installPrompt.prompt()
+    },
+  },
+  created() {
+    if (!this.$q.platform.is.mobile || this.isInstalled) return
+
+    window.addEventListener("beforeinstallprompt", e => {
+      e.preventDefault()
+      this.installPrompt = e
+      this.isInstallDialogShown = true
+    })
   },
 }
 </script>
