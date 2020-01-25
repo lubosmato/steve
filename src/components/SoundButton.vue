@@ -4,12 +4,12 @@
       <source :src="mp3Path" type="audio/mpeg" />
       <source :src="oggPath" type="audio/ogg" />
     </audio>
+    <q-linear-progress :value="clickProgress" class="click-progress" />
     <q-btn @click="play" color="primary" :label="soundFile" />
   </div>
 </template>
 
 <script>
-/* eslint-disable no-undef */
 export default {
   name: "SoundButton",
   props: {
@@ -21,6 +21,16 @@ export default {
     }
   },
   computed: {
+    clicks() {
+      return this.$store.state.steve.clicks[this.soundFile] ?? 0
+    },
+    clickProgress() {
+      const mostClicks = Math.max(...Object.values(this.$store.state.steve.clicks), 0)
+      if (mostClicks == 0) {
+        return 0
+      }
+      return this.clicks / mostClicks
+    },
     oggPath() {
       return `statics/speech/${this.soundFile}.ogg`
     },
@@ -30,6 +40,7 @@ export default {
   },
   methods: {
     play() {
+      this.$store.commit("steve/ADD_CLICK", this.soundFile)
       this.$refs.audio.play()
     },
   },
@@ -42,6 +53,9 @@ export default {
   height: 100%;
   font-size: 1em;
   word-wrap: break-word;
+}
+.click-progress {
+  margin-bottom: 0.15em;
 }
 @media only screen and (max-width: 1024px) {
   .q-btn {

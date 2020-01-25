@@ -1,7 +1,7 @@
 import Vue from "vue"
 import Vuex from "vuex"
-
-// import example from './module-example'
+import VuexPersistence from "vuex-persist"
+import steve from "./steve"
 
 Vue.use(Vuex)
 
@@ -14,15 +14,20 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+})
+
 export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      steve,
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV,
+    plugins: [vuexLocal.plugin],
   })
 
   return Store
