@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { EventBus } from "src/event-bus.js"
 export default {
   name: "SoundButton",
   props: {
@@ -41,8 +42,16 @@ export default {
   methods: {
     play() {
       this.$store.commit("steve/ADD_CLICK", this.soundFile)
+      EventBus.$emit("start-playing")
       this.$refs.audio.play()
     },
+  },
+  created() {
+    EventBus.$on("start-playing", () => {
+      // eslint-disable-next-line no-console
+      this.$refs.audio.pause()
+      this.$refs.audio.currentTime = 0
+    })
   },
 }
 </script>
